@@ -1,0 +1,13 @@
+---
+- name: PowerShell Script
+  hosts: hypervisors
+  connection: winrm
+  winrm_transport: kerberos
+  vars:
+    remote_dest: "G:\\Scripts\\Powershell\\Get-SystemInfo.ps1"
+
+  tasks:
+    - name: Run Script
+      ansible.windows.win_powershell:
+        script: |
+          {{ remote_dest }}
